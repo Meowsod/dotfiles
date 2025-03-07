@@ -1,0 +1,62 @@
+#!/bin/sh
+
+readonly DRIVE="$1"
+readonly DRIVE_CACHE="$HOME/.drive_status"
+readonly LOG="$HOME/dwmdvd.log"
+
+if [ ! -f "$DRIVE_CACHE" ]; then
+	touch "$DRIVE_CACHE"; CACHE=""
+else
+	CACHE=$(cat $DRIVE_CACHE)
+fi
+
+size=$(df -h "$DRIVE" | awk 'NR==2 {print $4}')
+blk=$(blkid "$DRIVE")
+label=$(echo "$blk" | awk -F'LABEL="' '{print $2}' | awk -F'"' '{print $1}')
+standard=$(echo "$blk" | awk -F'TYPE="' '{print $2}' | awk -F'"' '{print $1}')
+
+log() {
+	echo "$(date): $1" >> "$LOG"
+}
+
+if [[ "$standard" == 'iso9660' ]]; then
+	if [ -z "$label" ]; then
+		format="CD"
+	else
+		format="DVD"
+	fi
+elif [[ "$standard" == 'udf' ]]; then
+	media=$(/usr/bin/dvd+rw-mediainfo "$DRIVE" 2>&1)
+	if echo "$media" | grep -q 'Mounted Media:.*DVD' || echo "$media" | grep -q 'Media Book Type:.*DVD'; then
+		format="DVD"
+	elif echo "$media" | grep -q 'Mounted Media:.*BD' || echo "$media" | grep -q 'Media Book Type:.*BD'; then
+		format="BD"
+	else
+		format="?"
+	fi
+else
+	format=""
+fi
+
+update_dvd_status() {
+	if [[ -n "$format" ]]; then
+		if [[ "$CACHE" =~ "$DRIVE" ]]; then
+			exit
+		fi
+		if [ -z "$label" ]; then
+			label="No Label"
+		fi
+		if [ -z "$CACHE" ]; then
+			echo "${DRIVE}: ${format} (${label}, ${size})" > "$DRIVE_CACHE"
+		else
+			echo "${CACHE} ${DRIVE}: ${format} (${label}, ${size})" > "$DRIVE_CACHE"
+		fi
+	else
+		cat "$DRIVE_CACHE" | sed "s/${DRIVE}: [^ ]*(.*) //" > "$DRIVE_CACHE"
+	fi
+	log "Updated Drive status (${DRIVE}, ${label}, ${size})"
+	pkill -RTMIN+1 dwmblocks
+}
+
+update_dvd_status || log "Failed to update Drive status"
+
