@@ -31,7 +31,7 @@ An optical drive status requiring `99-dvd-monitor.rules` and written to be used 
 
 ### screenrecord
 
-X11 screen recording via [ffmpeg](https://git.ffmpeg.org/ffmpeg) and [selx](https://codeberg.org/NRK/selx)
+X11 screen recording via [ffmpeg](https://git.ffmpeg.org/ffmpeg) and [selx](https://codeberg.org/NRK/selx). It needs to be run once to begin a recording and once to stop that recording. Written to be used with [dwm](https://dwm.suckless.org).
 
 ## Usage
 
