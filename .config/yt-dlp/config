@@ -1,0 +1,31 @@
+## misc
+--verbose
+--all-subs
+--add-metadata
+--merge-output-format mkv
+# --format bestvideo+bestaudio
+# --no-check-certificate
+
+## download everything
+# write
+--write-info-json
+--no-clean-info-json
+--write-annotations
+--write-subs
+--write-thumbnail
+--write-description
+--write-comments
+# embed
+--embed-subs
+--embed-thumbnail
+--embed-metadata
+--embed-chapters
+
+# archive file
+--download-archive "./downloads/yt-dlp/archive"
+
+# root output path
+--paths "./downloads/yt-dlp/"
+
+# output format
+-o "www/%(webpage_url_domain)s/%(uploader_id)s/[%(upload_date>%Y.%m.%d)s] %(title).50s [%(id)s]/%(title).50s [%(id)s].%(ext)s"
