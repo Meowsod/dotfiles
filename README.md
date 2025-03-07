@@ -15,8 +15,8 @@ $ cd dotfiles
 ```
 
 ```
-$ sudo mv bin/* /usr/local/bin && rm -rf bin
-$ sudo mv rules/* /etc/udev/rules.d/ && rm -rf rules
+$ sudo mv bin/* /usr/local/bin/ && sudo mv rules/* /etc/udev/rules.d/
+$ rm -rf bin rules
 ```
 
 ```
