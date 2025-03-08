@@ -4,8 +4,8 @@ Hiii these are my dotfiles, enjoy!!
 
 ## Requirements
 
-* Git
-* Stow
+* git
+* stow
 
 ## Installation
 
@@ -38,6 +38,13 @@ X11 screen recording via [ffmpeg](https://git.ffmpeg.org/ffmpeg) and [selx](http
 Please verify that the bash scripts etc wont destroy ur system, as I've only written them for my own personal use.
 
 ## About
+
+## Applications
+
+* mpv
+* mpd
+* ncmpcpp
+* yt-dlp
 
 ## Todo
 
