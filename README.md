@@ -27,7 +27,7 @@ $ stow .
 
 ### dwmdvd
 
-An optical drive status requiring `99-dvd-monitor.rules` and written to be used with [dwmblocks](https://github.com/torrinfail/dwmblocks).
+An optical drive status requiring `99-dvd-monitor.rules` and [dvd+rw-tools](https://archlinux.org/packages/extra/x86_64/dvd+rw-tools/). Written to be used with [dwmblocks](https://github.com/torrinfail/dwmblocks) via a text file.
 
 ### screenrecord
 
