@@ -33,9 +33,11 @@ An optical drive status requiring `99-dvd-monitor.rules` and [dvd+rw-tools](http
 
 X11 screen recording via [ffmpeg](https://git.ffmpeg.org/ffmpeg) and [selx](https://codeberg.org/NRK/selx). It needs to be run once to begin a recording and once to stop that recording.
 
-## Usage
+## Usage and notes
 
 Please verify that the bash scripts etc wont destroy ur system, as I've only written them for my own personal use.
+
+`.bash_logout` runs `rm $HOME/.bash_history-*.tmp`, which deletes any temp bash history files on logout.
 
 ## About
 
