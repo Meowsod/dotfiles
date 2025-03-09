@@ -17,7 +17,8 @@ $ cd dotfiles
 ```bash
 $ sudo mkdir -p /usr/share/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
 $ sudo mv bin/* /usr/local/bin/ && sudo mv rules/* /etc/udev/rules.d/ && sudo mv sounds/* /usr/share/sounds/
-```[^1]
+```
+[^1]
 
 ```bash
 $ stow .
