@@ -40,15 +40,6 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 
 `.bash_logout` runs `rm $HOME/.bash_history-*.tmp`, which deletes any temp bash history files on logout.
 
-## About
-
-## Applications
-
-* mpv
-* mpd
-* ncmpcpp
-* yt-dlp
-
 ## Todo
 
 * Switch to possibly another WM and nvim.
