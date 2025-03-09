@@ -18,11 +18,11 @@ $ cd dotfiles
 $ sudo mkdir -p /usr/share/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
 $ sudo cp bin/* /usr/local/bin/ && sudo cp rules/* /etc/udev/rules.d/ && sudo cp sounds/* /usr/share/sounds/
 ```
-[^1]
 
 ```bash
 $ stow .
 ```
+[^1]
 
 ## Bash scripts
 
@@ -53,4 +53,4 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 
 * Switch to possibly another WM and nvim.
 
-[^1]: `.stow-local-ignore` will ignore symlinking the directories to avoid polluting ~
+[^1]: `.stow-local-ignore` makes stow not symlink `^/bin`, `^/rules` & `^/sounds` (to avoid polluting $HOME)
