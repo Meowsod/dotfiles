@@ -9,17 +9,17 @@ Hiii these are my dotfiles, enjoy!!
 
 ## Installation
 
-```
+```bash
 $ git clone git@github.com/Meowsod/dotfiles.git
 $ cd dotfiles
 ```
 
-```
-$ sudo mv bin/* /usr/local/bin/ && sudo mv rules/* /etc/udev/rules.d/
-$ rm -rf bin rules
-```
+```bash
+$ sudo mkdir -p /usr/share/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
+$ sudo mv bin/* /usr/local/bin/ && sudo mv rules/* /etc/udev/rules.d/ && sudo mv sounds/* /usr/share/sounds/
+```[^1]
 
-```
+```bash
 $ stow .
 ```
 
@@ -51,3 +51,6 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 ## Todo
 
 * Switch to possibly another WM and nvim.
+
+# Footnotes
+[^1]: `.stow-local-ignore` will ignore symlinking the file to avoid polluting ~
