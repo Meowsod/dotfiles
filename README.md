@@ -53,4 +53,4 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 
 * Switch to possibly another WM and nvim.
 
-[^1]: `.stow-local-ignore` will ignore symlinking the file to avoid polluting ~
+[^1]: `.stow-local-ignore` will ignore symlinking the directories to avoid polluting ~
