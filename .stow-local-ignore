@@ -20,7 +20,9 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
+^/src
 ^/bin
 ^/rules
 ^/sounds
 ^/wallpapers
+^/fonts
