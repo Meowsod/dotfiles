@@ -9,6 +9,8 @@ Hiii these are my dotfiles, enjoy!!
 
 ## Installation
 
+Make sure you don't already have configuration files with the same filepaths so that stow can symlink properly.
+
 ```bash
 $ git clone git@github.com/Meowsod/dotfiles.git
 $ cd dotfiles
@@ -44,4 +46,4 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 
 * Switch to possibly another WM and nvim.
 
-[^1]: `.stow-local-ignore` makes stow not symlink `^/bin`, `^/rules` & `^/sounds` (to avoid polluting $HOME)
+[^1]: `.stow-local-ignore` makes stow not symlink `^/src`, `^/bin`, `^/rules`, `^/sounds`, `^/wallpapers` & `^/fonts` (to avoid polluting $HOME)
