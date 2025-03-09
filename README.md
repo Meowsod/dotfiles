@@ -16,7 +16,7 @@ $ cd dotfiles
 
 ```bash
 $ sudo mkdir -p /usr/share/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
-$ sudo mv bin/* /usr/local/bin/ && sudo mv rules/* /etc/udev/rules.d/ && sudo mv sounds/* /usr/share/sounds/
+$ sudo cp bin/* /usr/local/bin/ && sudo cp rules/* /etc/udev/rules.d/ && sudo cp sounds/* /usr/share/sounds/
 ```
 [^1]
 
@@ -53,5 +53,4 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 
 * Switch to possibly another WM and nvim.
 
-# Footnotes
 [^1]: `.stow-local-ignore` will ignore symlinking the file to avoid polluting ~
