@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Services
 exec mpd &
 (sleep 5 && systemctl --user start mpdas) &
