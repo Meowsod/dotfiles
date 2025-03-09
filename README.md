@@ -15,7 +15,7 @@ $ cd dotfiles
 ```
 
 ```bash
-$ sudo mkdir -p /usr/share/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
+$ sudo mkdir -p /usr/local/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
 $ sudo cp bin/* /usr/local/bin/ && sudo cp rules/* /etc/udev/rules.d/ && sudo cp sounds/* /usr/share/sounds/
 ```
 
