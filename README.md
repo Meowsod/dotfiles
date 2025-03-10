@@ -18,7 +18,12 @@ $ cd dotfiles
 
 ```bash
 $ sudo mkdir -p /usr/local/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
-$ sudo cp bin/* /usr/local/bin/ && sudo cp rules/* /etc/udev/rules.d/ && sudo cp sounds/* /usr/share/sounds/ && sudo cp wallpapers/* /usr/share/wallpapers/
+$ sudo -s -- <<EOF
+    ln -s "$(pwd)/bin/"* /usr/local/bin/
+    ln -s "$(pwd)/rules/"* /etc/udev/rules.d/
+    ln -s "$(pwd)/sounds/"* /usr/share/sounds/
+    ln -s "$(pwd)/wallpapers/* /usr/share/wallpapers/
+EOF
 ```
 
 ```bash
@@ -45,5 +50,6 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 ## Todo
 
 * Switch to possibly another WM and nvim.
+* Symlink to usr dirs instead.
 
 [^1]: `.stow-local-ignore` makes stow not symlink `^/src`, `^/bin`, `^/rules`, `^/sounds`, `^/wallpapers` & `^/fonts` (to avoid polluting $HOME)
