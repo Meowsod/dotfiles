@@ -50,6 +50,5 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 ## Todo
 
 * Switch to possibly another WM and nvim.
-* Symlink to usr dirs instead.
 
 [^1]: `.stow-local-ignore` makes stow not symlink `^/src`, `^/bin`, `^/rules`, `^/sounds`, `^/wallpapers` & `^/fonts` (to avoid polluting $HOME)
