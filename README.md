@@ -22,7 +22,7 @@ $ sudo -s -- <<EOF
     ln -s "$(pwd)/bin/"* /usr/local/bin/
     ln -s "$(pwd)/rules/"* /etc/udev/rules.d/
     ln -s "$(pwd)/sounds/"* /usr/share/sounds/
-    ln -s "$(pwd)/wallpapers/* /usr/share/wallpapers/
+    ln -s "$(pwd)/wallpapers/"* /usr/share/wallpapers/
 EOF
 ```
 
