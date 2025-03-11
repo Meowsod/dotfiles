@@ -22,6 +22,7 @@ _darcs
 
 ^/src
 ^/bin
+^/bash_scripts
 ^/rules
 ^/sounds
 ^/wallpapers
