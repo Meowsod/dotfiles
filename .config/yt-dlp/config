@@ -2,7 +2,7 @@
 --verbose
 --all-subs
 --add-metadata
---merge-output-format mkv
+# --merge-output-format mkv
 # --format bestvideo+bestaudio
 # --no-check-certificate
 

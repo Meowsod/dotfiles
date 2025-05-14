@@ -1,7 +1,7 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 static const Block blocks[] = {
     /*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-    {" [ ^c#f4f492^ ", "cat $HOME/.recording", 0, 3},
+    {" [ ^c#f4f492^ ", "cat $HOME/.recording || echo \"^c#ffb7c4^\"", 0, 3},
 
     {"󰃰 ^c#9dd2de^", "task _get $(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1).description", 1080, 0},
 

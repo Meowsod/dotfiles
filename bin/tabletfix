@@ -1,0 +1,12 @@
+#!/bin/bash
+
+name="Wacom Intuos BT S Pen stylus"
+#name="Wacom Co.,Ltd. Intuos BT S stylus"
+monitor="DVI-D-0"
+
+stylus=$(xinput list --id-only "$name")
+
+printf "Monitor:\n$monitor\n"
+printf "Stylus:\n$name\n$stylus\n"
+
+xinput map-to-output "$stylus" "$monitor"

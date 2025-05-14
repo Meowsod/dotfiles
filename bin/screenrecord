@@ -1,18 +1,21 @@
 #!/bin/bash
+set -e
 
-output_dir="$HOME/videos/screenrecordings" && mkdir -p "$output_dir"
+DIR="$HOME/videos/screenrecordings" && mkdir -p "$DIR"
+STATUS="$HOME/.recording"
 
 for pid in $(pidof -x screenrecord); do
     if [ $pid != $$ ]; then
         echo "[$(date)] : screenrecord : is already running with PID $pid"
         # Find the PID of the ffmpeg process related to screenrecord
-        ffmpeg_pid=$(ps -ef | grep -i 'ffmpeg' | grep -i 'x11grab' | grep -i "$output_dir" | grep -v grep | awk '{print $2}')
+        ffmpeg_pid=$(ps -ef | grep -i 'ffmpeg' | grep -i 'x11grab' | grep -i "$DIR" | grep -v grep | awk '{print $2}')
         if [ -n "$ffmpeg_pid" ]; then
             # Send SIGTERM to gracefully stop ffmpeg
             kill -TERM $ffmpeg_pid
             
             if [ $? -eq 0 ]; then
                 echo "[$(date)] : screenrecord : ffmpeg process with PID $ffmpeg_pid gracefully stopped."
+				rm "$STATUS"; pkill -RTMIN+3 "dwmblocks"; echo "[$(date)] : screenrecord : dwmblocks status updated."
             else
                 echo "[$(date)] : screenrecord : Failed to send SIGTERM to ffmpeg process with PID $ffmpeg_pid."
             fi
@@ -23,9 +26,10 @@ for pid in $(pidof -x screenrecord); do
     fi
 done
 
-OUTPUT="$output_dir/$(date '+%F_%H-%M-%S').mp4"
-STATUS="/home/msozod/.recording"
+FILE="$(date '+%F_%H-%M-%S').mp4"
+OUTPUT="$DIR/$FILE"
 
+# fetch audio devices
 audio_devices=$(ffmpeg -sources pulse)
 audio_device_a=$(echo "$audio_devices" | awk -F'\\[|\\]' '/Blue Snowball Mono/ {print $1}' | xargs)
 audio_device_b=$(echo "$audio_devices" | awk -F'\\[|\\]' '/Monitor of PCM2902 Audio Codec Analog Stereo/ {print $1}' | xargs)
@@ -35,10 +39,9 @@ IFS=, read x y w h << EOF
 $(selx)
 EOF
 [ -z "$h" ] && exit 1  # nothing selected
-even_w="$(( w + (w % 2) ))"; even_h="$(( h + (h % 2) ))";  # pad to an even res
+even_w="$(( w + (w % 2) ))"; even_h="$(( h + (h % 2) ))"; # pad to an even res
 
-shortened_status=$(echo "$OUTPUT" | sed "s|^$HOME|~|")
-echo "^c#9dd2de^$shortened_status" > "$STATUS"
+echo "^c#9dd2de^/$FILE" > "$STATUS"
 pkill -RTMIN+3 "dwmblocks"
 
 ffmpeg -f x11grab -s "${w}x${h}" -i ":0.0+$x,$y" \
@@ -49,9 +52,4 @@ ffmpeg -f x11grab -s "${w}x${h}" -i ":0.0+$x,$y" \
     -vf "format=yuv422p, pad=w=${even_w}:h=${even_h}" -crf 18 \
     -c:v libx264 -c:a:0 aac -c:a:1 aac \
     "$OUTPUT"
-
-echo "^c#ffb7c4^" > "$STATUS"
-pkill -RTMIN+3 "dwmblocks"
-
-st -e mediainfoinput "$OUTPUT"
 

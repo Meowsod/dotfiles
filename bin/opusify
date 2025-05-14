@@ -1,0 +1,9 @@
+#!/bin/bash
+
+opussies="/home/$USER/music/opus"
+mkdir -p "$opussies"
+
+for file in "$@"
+do
+	ffmpeg -i "$file" -map a:0 -c:a libopus -vbr on -b:a 128K -compression_level 10 "$opussies/$file.opus"
+done

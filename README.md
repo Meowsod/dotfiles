@@ -31,7 +31,7 @@ $ stow .
 ```
 [^1]
 
-## Bash scripts
+## The scripts
 
 ### dwmdvd
 
@@ -50,5 +50,6 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 ## Todo
 
 * Switch to possibly another WM and nvim.
+* Rename screenrecord to xrecord and screenshot to xshot
 
 [^1]: `.stow-local-ignore` makes stow not symlink `^/src`, `^/bin`, `^/rules`, `^/sounds`, `^/wallpapers` & `^/fonts` (to avoid polluting $HOME)

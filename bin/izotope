@@ -1,0 +1,4 @@
+#!/bin/sh
+
+winetricks sound=alsa
+wine "/home/$USER/.wine/drive_c/Program Files/iZotope/RX 11 Audio Editor/win64/iZotope RX 11 Audio Editor.exe"

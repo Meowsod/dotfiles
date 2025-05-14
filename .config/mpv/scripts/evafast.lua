@@ -237,7 +237,7 @@ local function evafast(keypress)
         end
     elseif (keypress["event"] == "up" and (not repeated or speedup_target)) or keypress["event"] == "press" then
         if options.seek_distance ~= 0 then
-            mp.commandv("seek", options.seek_distance)
+            mp.commandv("seek", options.seek_distance, "exact")
             if options.show_seek and uosc_available then
                 mp.command("script-binding uosc/flash-timeline")
             end

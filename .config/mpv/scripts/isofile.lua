@@ -1,6 +1,7 @@
 function is_dvd_source(path)
-	return string.match(path, "%.[iI][sS][oO]$") or
-		string.match(path, "VIDEO_TS")
+	if string.match(path, "%.[iI][sS][oO]$") or string.match(path, "VIDEO_TS") then
+		return not string.match(path, "av://dvdvideo:%")
+	end
 end
 
 mp.register_event('file-loaded', function()
