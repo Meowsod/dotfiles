@@ -16,4 +16,4 @@ mkcd() {
 export PATH="/home/$USER/.local/bin:$PATH"
 
 # funny quotes
-fortune | cowsay -f '/usr/share/cows/duck.cow' | lolcat
+printf '\033[0;32m'; fortune | cowsay; printf '\033[0m' # lolcat
