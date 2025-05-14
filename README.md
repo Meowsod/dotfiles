@@ -52,4 +52,4 @@ Please verify that the bash scripts etc wont destroy ur system, as I've only wri
 * Switch to possibly another WM and nvim.
 * Rename screenrecord to xrecord and screenshot to xshot
 
-[^1]: `.stow-local-ignore` makes stow not symlink `^/src`, `^/bin`, `^/rules`, `^/sounds`, `^/wallpapers` & `^/fonts` (to avoid polluting $HOME)
+[^1]: `.stow-local-ignore` has added `^IDEA.*`, `^/src`, `^/bin`, `^/rules`, `^/sounds`, `^/wallpapers` & `^/fonts` to the blacklist (to avoid polluting $HOME)
