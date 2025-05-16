@@ -2,7 +2,7 @@
 
 choice=$(echo -e "no\n1\n2\n3\n4\n5\n6\n7\n8\n9" | dmenu -p "TTY:")
 
-[ "$choice" =~ '^[0-9]+$' ] && exit 0
-[ ! "$choice" -lt 10 ] && exit 1
+if ! [[ "$choice" =~ '^[0-9]+$' ]]; then exit 0; fi
+[ "$choice" -ge 10 ] && exit 1
 
 chvt "$choice"
