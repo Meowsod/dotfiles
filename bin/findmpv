@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "No search given, exiting." && exit 1
+find . -iname "*$1*$2" -print0 | xargs -0 mpv
