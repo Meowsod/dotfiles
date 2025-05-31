@@ -16,6 +16,8 @@ $ git clone git@github.com/Meowsod/dotfiles.git
 $ cd dotfiles
 ```
 
+### Symlink shell scripts
+
 ```bash
 $ sudo mkdir -p /usr/local/bin/ /etc/udev/rules.d/ /usr/share/sounds/ /usr/share/wallpapers/
 $ sudo -s -- <<EOF
@@ -24,6 +26,16 @@ $ sudo -s -- <<EOF
     ln -s "$(pwd)/sounds/"* /usr/share/sounds/
     ln -s "$(pwd)/wallpapers/"* /usr/share/wallpapers/
 EOF
+```
+
+### Build and install softwarez
+
+```bash
+$ for s in src/*; do
+    cd "$s"
+    sudo make clean install
+    cd ../../
+done
 ```
 
 ```bash
@@ -46,6 +58,12 @@ X11 screen recording via [ffmpeg](https://git.ffmpeg.org/ffmpeg) and [selx](http
 Please verify that the bash scripts etc wont destroy ur system, as I've only written them for my own personal use.
 
 `.bash_logout` runs `rm $HOME/.bash_history-*.tmp`, which deletes any temp bash history files on logout.
+
+## Config explanations
+
+### rmpc
+
+The video script will look for a matching .cdg (CD+G) or a .mkv file to then play with ffplay, which might hopefully sync up nicely.
 
 ## Todo
 

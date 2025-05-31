@@ -1,6 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+#env
 PS1='[\u@\h \W]\$ '
 
 # aliases
@@ -13,9 +14,7 @@ mkcd() {
 
 # export paths
 #export PATH="/usr/local/bin:$PATH"
-export PATH="/home/$USER/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
-# funny quotes
-#printf '\033[0;32m'"$(fortune | cowsay)"'\033[0m'"\n" # lolcat
-# fortune -o for unlucky days??
+#fun TODO: lolcat/f -o?
 printf '\033[0;32m'; fortune -a | cowsay; printf '\033[0m'

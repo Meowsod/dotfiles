@@ -1,0 +1,16 @@
+#!/bin/bash
+
+dir="$HOME/pictures/screenshots/$(printf '%(%Y/%m)T\n' -1)"
+mkdir -p "$dir" && cd "$dir"
+
+# get current mouse pointer monitor
+monitor=$(currentmonitor)
+echo "Monitor: $monitor"
+
+# get proper area for scrot
+area=$(scrotwrapper "$monitor")
+echo "Area: $area"
+
+# ss
+scrot -a "$area" -q 100 -Z 9 -e 'xclip -selection clipboard -t image/png -i $f'
+

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+F="$(sed -n '/^music_directory[[:space:]]*/{s/.*"\(.*\)".*/\1/p;q}' ~/.config/mpd/mpd.conf)/${FILE%.*}"
+if [ -f "$F.cdg" ]; then
+	ffplay -an -sws_flags neighbor -autoexit "$F.cdg"
+elif [ -f "$F.mkv" ]; then
+	ffplay -an -autoexit "$F.mkv"
+fi

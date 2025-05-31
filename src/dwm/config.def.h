@@ -64,11 +64,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[] = { "tabbed", "-c", "-r", "2", "st", "-w", "''" };
-
-static const char *filemanager[] = { "st", "-e", "lf" };
-static const char *mus[] = { "st", "-e", "ncmpcpp" };
-static const char *txt[] = { "st", "-e", "vim" };
-
 static const char *exitdwm[] = { "quit", NULL };
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
@@ -85,9 +80,11 @@ static const Key keys[] = {
     { MODKEY,                       XK_plus,   spawn,          SHCMD("amixer -D pulse set Master 5%+; pkill -RTMIN+2 dwmblocks") },
     { MODKEY,                       XK_minus,  spawn,          SHCMD("amixer -D pulse set Master 5%-; pkill -RTMIN+2 dwmblocks") },
     { MODKEY,                       XK_m,      spawn,          SHCMD("amixer -D pulse set Master 1+ toggle; pkill -RTMIN+2 dwmblocks") },
-    { MODKEY|ShiftMask,             XK_f,      spawn,          {.v = filemanager } },
-    { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mus } },
-    { MODKEY|ShiftMask,             XK_v,      spawn,          {.v = txt } },
+	//{ MODKEY,                       XK_e,      spawn,          SHCMD("xdotool type \"$(cat \"/home/$USER/.local/share/emoji\" | dmenu -c -i -l 30 | awk -F'␟' '{print $1}' | tr -d '\n')\"") },
+	{ MODKEY,                       XK_e,      spawn,          SHCMD("echo -n \"$(cat \"/home/$USER/.local/share/emoji\" | dmenu -c -i -l 30 | awk -F'␟' '{print $1}' | tr -d '\n')\" | xclip -selection clipboard") },
+    { MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("thunar") },
+    { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("st -e rmpc") },
+    { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("st -e vim") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

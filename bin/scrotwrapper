@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Get the monitor name as an argument
+MONITOR=$1
+
+# Get the monitor info from xrandr
+RESULT=$(xrandr --query | grep "$MONITOR")
+INFO=$(echo "$RESULT" | awk '{print $3}')
+
+# Check if "primary" in result
+if [[ "$INFO" == "primary" ]]; then
+    INFO=$(echo "$RESULT" | awk '{print $4}')
+fi
+
+# Extract the resolution and coordinates
+RES=$(echo $INFO | cut -d'+' -f1)
+X=$(echo $INFO | cut -d'+' -f2)
+Y=$(echo $INFO | cut -d'+' -f3)
+
+# Combine the coordinates and resolution for scrot
+AREA="$X,$Y,$RES"
+
+# Replace any X x with ,
+AREA=$(echo "$AREA" | tr Xx ,)
+
+echo "$AREA"
