@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xinput map-to-output "$(xinput list --name-only | dmenu -c -l 30)" "$(xrandr | grep -oP '^\S+(?=\sconnected)' | dmenu -c -l 30)"
