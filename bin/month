@@ -1,0 +1,15 @@
+#!/bin/sh
+
+printf "01 January Jan Tammikuu
+02 Febuary Feb Helmikuu
+03 March Mar Maaliskuu
+04 April Apr Huhtikuu
+05 May May Toukokuu
+06 June Jun Kesäkuu
+07 July Jul Heinäkuu
+08 August Aug Elokuu
+09 September Sep Syyskuu
+10 October Oct Lokakuu
+11 November Nov Marraskuu
+12 December Dec Joulukuu" | dmenu -c -l 12 | tr -d '\n' | xclip -selection clipboard -i
+
